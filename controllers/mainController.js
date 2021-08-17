@@ -3,6 +3,10 @@ const env = require('dotenv');
 const envFilePath = path.resolve(__dirname, '../.env');
 env.config({ path: envFilePath });
 
+const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY, {
+    apiVersion: '2020-08-27'
+});
+
 exports.viewHome = function (req, res) {
     res.render('index');
 };
@@ -18,10 +22,6 @@ exports.viewCustomWebsitesPage = function (req, res) {
 exports.viewSpsPage = function (req, res) {
     res.render('solid-pro-services');
 };
-
-const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY, {
-    apiVersion: '2020-08-27'
-});
 
 exports.createCheckoutSession = async function (req, res) {
     const domainURL = process.env.DOMAIN;
