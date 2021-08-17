@@ -25,7 +25,24 @@ exports.viewSpsPage = function (req, res) {
 
 exports.createCheckoutSession = async function (req, res) {
     const domainURL = process.env.DOMAIN;
-    const { priceId } = req.body;
+    const prices = req.body.priceId;
+    const items = [];
+    if (Array.isArray(prices)) {
+        prices.forEach(price => {
+            let item = {
+                price: price,
+                quantity: 1
+            };
+            items.push(item);
+        });
+    } else {
+        let item = {
+            price: prices,
+            quantity: 1
+        };
+        items.push(item);
+    }
+    // console.log(items);
 
     // Create new Checkout Session for the order
     // Other optional params include:
@@ -37,15 +54,10 @@ exports.createCheckoutSession = async function (req, res) {
         const session = await stripe.checkout.sessions.create({
         mode: "subscription",
         payment_method_types: ["card"],
-        line_items: [
-            {
-            price: priceId,
-            quantity: 1,
-            },
-        ],
+        line_items: items,
         // ?session_id={CHECKOUT_SESSION_ID} means the redirect will have the session ID set as a query param
         success_url: `${domainURL}/?session_id={CHECKOUT_SESSION_ID}`,
-        cancel_url: `${domainURL}`,
+        cancel_url: `${domainURL}/hosting`,
         });
 
         return res.redirect(303, session.url);
