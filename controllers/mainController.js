@@ -7,20 +7,20 @@ const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY, {
     apiVersion: '2020-08-27'
 });
 
-exports.viewHome = function (req, res) {
+exports.viewHome = (req, res) => {
     res.render('index');
 };
 
-exports.viewHostingPage = function (req, res) {
-    res.render('hosting');
+exports.viewSpsPage = (req, res) => {
+    res.render('solid-pro-services');
 };
 
-exports.viewCustomWebsitesPage = function (req, res) {
+exports.viewCustomWebsitesPage = (req, res) => {
     res.render('websites');
 };
 
-exports.viewSpsPage = function (req, res) {
-    res.render('solid-pro-services');
+exports.viewHostingPage = (req, res) => {
+    res.render('hosting');
 };
 
 exports.createCheckoutSession = async function (req, res) {
@@ -56,7 +56,7 @@ exports.createCheckoutSession = async function (req, res) {
         payment_method_types: ["card"],
         line_items: items,
         // ?session_id={CHECKOUT_SESSION_ID} means the redirect will have the session ID set as a query param
-        success_url: `${domainURL}/?session_id={CHECKOUT_SESSION_ID}`,
+        success_url: `${domainURL}/hosting/order/success?session_id={CHECKOUT_SESSION_ID}`,
         cancel_url: `${domainURL}/hosting`,
         });
 
@@ -69,4 +69,13 @@ exports.createCheckoutSession = async function (req, res) {
             }
         });
     }
-}
+};
+
+exports.viewOrderSuccessPage = async function (req, res) {
+    try {
+        const session = await stripe.checkout.sessions.retrieve(req.query.session_id);
+        return res.render('hosting-success');
+    } catch (e) {
+        return res.render('404');
+    }
+};
