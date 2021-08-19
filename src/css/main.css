@@ -191,6 +191,26 @@ main {
 	padding-right: 1rem;
 }
 
+.page-header {
+	margin-bottom: 6rem;
+	text-align: center;
+}
+
+.page-content h1,
+.page-content h2,
+.page-content h3,
+.page-content h4,
+.page-content h5,
+.page-content h6 {
+	margin-top: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-content p {
+	margin-top: 1rem;
+	margin-bottom: 1rem;
+}
+
 /* SITE HEADER */
 
 .site-header {
@@ -711,6 +731,7 @@ main {
 	text-align: center;
 	text-transform: uppercase;
 	letter-spacing: 0.15em;
+	cursor: pointer;
 	transition: all 0.25s;
 }
 
@@ -797,10 +818,40 @@ footer {
 	display: grid;
 	gap: 2rem;
 	justify-items: center;
-	padding: 6rem 1rem;
+	padding: 6rem 1rem 0;
 	background-color: var(--color-hex-dark);
 	color: #fff;
 	text-align: center;
+}
+
+.site-info {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	padding: 2rem 0;
+}
+
+.site-info span {
+	margin: 0.5rem 1rem;
+	font-size: 16px;
+	color: #fff;
+}
+
+.site-info a {
+	font-size: 16px;
+	color: #fff;
+	opacity: 0.5;
+	text-decoration: none;
+}
+
+.site-info span > span {
+	margin: 0;
+	opacity: 0.5;
+}
+
+.site-info a:hover {
+	opacity: 1;
+	transition: all 0.25s;
 }
 
 @media (min-height: 960px) {

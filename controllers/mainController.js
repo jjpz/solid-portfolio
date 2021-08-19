@@ -23,6 +23,14 @@ exports.viewHostingPage = (req, res) => {
     res.render('hosting');
 };
 
+exports.viewTermsPage = (req, res) => {
+    res.render('terms-of-service');
+};
+
+exports.viewPrivacyPage = (req, res) => {
+    res.render('privacy-policy');
+};
+
 exports.createCheckoutSession = async function (req, res) {
     const domainURL = process.env.DOMAIN;
     const prices = req.body.priceId;
