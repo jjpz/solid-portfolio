@@ -278,8 +278,8 @@ main {
 /* WORK */
 
 .work-main {
-	display: grid;
-	row-gap: 12rem;
+	/* display: grid; */
+	/* row-gap: 12rem; */
 }
 
 .work-header,
@@ -290,9 +290,18 @@ main {
 	margin-right: auto;
 }
 
+.work-header {
+	margin-bottom: 3rem;
+}
+
 .work-info {
-	margin-top: -9rem;
-	margin-bottom: -3rem;
+	/* margin-top: -9rem; */
+	margin-bottom: 9rem;
+}
+
+.work-info p {
+	font-family: var(--font-family-primary);
+	font-size: 24px;
 }
 
 .work-info-title {
@@ -301,7 +310,7 @@ main {
 
 .work-info-grid {
 	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+	/* grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); */
 	grid-gap: 2rem;
 }
 
@@ -319,6 +328,7 @@ main {
 	grid-template-rows: auto;
 	column-gap: 2rem;
 	align-items: start;
+	margin-bottom: 12rem;
 }
 
 .image {
@@ -451,6 +461,7 @@ main {
 	grid-template-columns: repeat(2, auto);
 	row-gap: 1.25rem;
 	align-items: baseline;
+	align-self: baseline;
 }
 
 .matrix-feature-title {
@@ -540,6 +551,7 @@ main {
 
 .enterprise-contact p {
 	margin: 0;
+	text-align: center;
 }
 
 .dot {
