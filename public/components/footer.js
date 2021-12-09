@@ -22,7 +22,7 @@ const footer = `
             </li>
         </ul>
     </nav>
-    <a class="button button-white" href="#" target="_blank">Email Us</a>
+    <a class="button button-white" href="mailto:hello@solidmiami.com" target="_blank">Email Us</a>
 </footer>
 `;
 
