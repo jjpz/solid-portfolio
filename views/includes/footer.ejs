@@ -26,6 +26,12 @@
     <div class="site-info">
         <span><a href="/terms-of-service">Terms of Service</a></span>
         <span><a href="/privacy-policy">Privacy Policy</a></span>
-        <span><span>&copy;</span> <a href="/">Solid Miami</a> <span>2021</span></span>
+        <span><span>&copy;</span> <a href="/">Solid Miami</a> <span class="year"></span></span>
     </div>
 </footer>
+
+<script>
+    const year = new Date().getFullYear();
+    let footerYear = document.querySelector('.year');
+    footerYear.innerHTML = year;
+</script>
