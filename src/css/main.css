@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 *,
 *::before,
 *::after {
@@ -5,6 +9,8 @@
 }
 
 html {
+	font-size: 62.5%;
+	font-size: 10px;
 	font-size: 1rem;
 }
 
@@ -12,13 +18,6 @@ html {
 	--color-hex-dark: #111111;
 	--color-hex-light: #cccccc;
 	--color-hex-lighter: #efefef;
-
-	--font-weight-normal: 400;
-	--font-weight-bold: 500;
-	--font-weight-bolder: 900;
-
-	--font-style-normal: normal;
-	--font-style-italic: italic;
 
 	--font-family-base: chaparral-pro, serif;
 	--font-family-primary: proxima-nova, sans-serif;
@@ -42,7 +41,7 @@ html {
 	--font-size-6-regular-dt: 24px;
 	--font-size-6-mb: 20px;
 
-	/* base font size : 18px */
+	/* base font size = 18px */
 	--font-size-base: 1.125rem;
 	--font-size-small: 18px;
 }
@@ -52,8 +51,8 @@ body {
 	line-height: 1.3;
 	font-family: var(--font-family-base);
 	font-size: var(--font-size-base);
-	font-weight: var(--font-weight-normal);
-	font-style: var(--font-style-normal);
+	font-style: normal;
+	font-weight: normal;
 	color: var(--color-hex-dark);
 	-webkit-text-size-adjust: 100%;
 	-webkit-font-smoothing: antialiased;
@@ -76,68 +75,74 @@ h6 {
 	margin: 0;
 }
 
+.h1-1,
 .h1-primary {
 	font-family: var(--font-family-primary);
 	font-size: var(--font-size-1-dt);
-	font-weight: var(--font-weight-normal);
-	font-style: var(--font-style-normal);
+	font-style: normal;
+	font-weight: normal;
 	text-transform: uppercase;
 	letter-spacing: 0.15em;
 }
 
+.h1-2,
 .h1-secondary {
 	font-family: var(--font-family-base);
 	font-size: var(--font-size-1-dt);
-	font-weight: var(--font-weight-normal);
-	font-style: var(--font-style-normal);
+	font-style: normal;
+	font-weight: normal;
 }
 
 .h2 {
 	line-height: 1;
 	font-family: var(--font-family-primary);
 	font-size: var(--font-size-2-dt);
-	font-weight: var(--font-weight-bolder);
-	font-style: var(--font-style-normal);
+	font-style: normal;
+	font-weight: 900;
 }
 
 .h3 {
 	font-family: var(--font-family-base);
 	font-size: var(--font-size-3-dt);
-	font-weight: var(--font-weight-normal);
-	font-style: var(--font-style-normal);
+	font-style: normal;
+	font-weight: normal;
 }
 
 .h4 {
 	font-family: var(--font-family-base);
 	font-size: var(--font-size-4-dt);
-	font-weight: var(--font-weight-normal);
-	font-style: var(--font-style-italic);
+	font-style: italic;
+	font-weight: normal;
 }
 
 .h5 {
 	font-family: var(--font-family-primary);
 	font-size: var(--font-size-5-dt);
-	font-weight: var(--font-weight-normal);
-	font-style: var(--font-style-normal);
+	font-style: normal;
+	font-weight: normal;
 	text-transform: uppercase;
 	letter-spacing: 0.15em;
 }
 
+.h6-1,
 .h6-regular {
 	font-family: var(--font-family-primary);
 	font-size: var(--font-size-6-regular-dt);
-	font-weight: var(--font-weight-normal);
-	font-style: var(--font-style-normal);
+	font-style: normal;
+	font-weight: normal;
 }
 
+.h6-2,
 .h6-bold {
 	font-family: var(--font-family-primary);
 	font-size: var(--font-size-6-bold-dt);
-	font-weight: var(--font-weight-bolder);
-	font-style: var(--font-style-normal);
+	font-style: normal;
+	font-weight: 900;
 }
 
 @media (max-width: 767px) {
+	.h1-1,
+	.h1-2,
 	.h1-primary,
 	.h1-secondary {
 		font-size: var(--font-size-1-mb);
@@ -159,6 +164,8 @@ h6 {
 		font-size: var(--font-size-5-mb);
 	}
 
+	.h6-1,
+	.h6-2,
 	.h6-regular,
 	.h6-bold {
 		font-size: var(--font-size-6-mb);
@@ -185,7 +192,7 @@ svg {
 
 main {
 	width: 100%;
-	max-width: 1200px;
+	max-width: 1280px;
 	margin: 0 auto 12rem;
 	padding-left: 1rem;
 	padding-right: 1rem;
@@ -258,6 +265,18 @@ main {
 	text-align: center;
 }
 
+.home-tech-grid {
+	text-align: center;
+}
+
+.home-tech-grid-title {
+	margin-bottom: 1rem;
+}
+
+.home-tech-grid-subtitle {
+	margin-bottom: 1rem;
+}
+
 @media (max-width: 640px) {
 	.home-title {
 		margin-bottom: 1rem;
@@ -269,9 +288,22 @@ main {
 	}
 }
 
-@media (min-height: 960px) {
+/* @media (min-height: 960px) {
 	.home-main {
 		height: 75%;
+	}
+} */
+
+/* TECH GRID */
+
+.tech-grid {
+	max-width: 85%;
+	margin: auto;
+}
+
+@media (max-width: 767px) {
+	.tech-grid {
+		max-width: 100%;
 	}
 }
 
@@ -716,10 +748,106 @@ main {
 	text-align: center;
 }
 
+/* CONTACT */
+
+.contact-header {
+	margin-top: 6rem;
+	margin-bottom: 6rem;
+}
+
+.contact-info {
+	text-align: right;
+}
+
+.contact-bottom {
+	max-width: 75%;
+	margin: 6rem auto;
+	text-align: center;
+}
+
+@media (max-width: 1023px) {
+	.contact-info {
+		text-align: left;
+	}
+}
+
+@media (max-width: 767px) {
+	.contact-bottom {
+		max-width: 100%;
+	}
+}
+
 /* 404 */
 
 .title-404 {
 	text-align: center;
+}
+
+/* FORMS */
+
+.input-group {
+	margin-bottom: 1rem;
+}
+
+input,
+textarea {
+	width: 100%;
+	padding-top: 1rem;
+	padding-left: 1rem;
+	padding-right: 1rem;
+	padding-bottom: 1rem;
+	border: none;
+	outline: none;
+	background-color: var(--color-hex-lighter);
+	font-family: var(--font-family-primary);
+	font-size: 24px;
+}
+
+input {
+	height: 60px;
+}
+
+textarea {
+	height: 120px;
+}
+
+.input-fname,
+.input-lname {
+	width: calc(50% - 0.5rem);
+	text-transform: capitalize;
+}
+
+.input-fname {
+	margin-right: 0.5rem;
+}
+
+.input-lname {
+	margin-left: 0.5rem;
+}
+
+.form-message {
+	margin: 1rem auto;
+	font-family: var(--font-family-primary);
+	font-size: var(--font-size-6-bold-dt);
+	font-weight: 900;
+	color: #ef3c70;
+	text-align: center;
+}
+
+@media (max-width: 767px) {
+	.input-fname,
+	.input-lname {
+		width: 100%;
+	}
+
+	.input-fname {
+		margin-right: 0;
+		margin-bottom: 1rem;
+	}
+
+	.input-lname {
+		margin-left: 0;
+	}
 }
 
 /* BUTTON */
@@ -735,14 +863,18 @@ main {
 	border-radius: 50px;
 	font-size: var(--font-size-small);
 	font-family: var(--font-family-primary);
-	font-weight: var(--font-weight-bold);
-	font-style: var(--font-style-normal);
+	font-style: normal;
+	font-weight: 500;
 	text-decoration: none;
 	text-align: center;
 	text-transform: uppercase;
 	letter-spacing: 0.15em;
 	cursor: pointer;
 	transition: all 0.25s;
+}
+
+.button-full {
+	width: 100%;
 }
 
 .button-black {
@@ -798,8 +930,8 @@ ul.menu a {
 	align-items: center;
 	font-family: var(--font-family-primary);
 	font-size: var(--font-size-6-dt);
-	font-weight: var(--font-weight-normal);
-	font-style: var(--font-style-normal);
+	font-style: normal;
+	font-weight: normal;
 	text-decoration: none;
 }
 

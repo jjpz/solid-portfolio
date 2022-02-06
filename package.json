@@ -15,12 +15,18 @@
 		"gulp-clean-css": "^4.3.0",
 		"gulp-concat-css": "^3.1.0",
 		"gulp-mode": "^1.1.0",
+		"postcss": "^8.4.6",
+		"tailwindcss": "^3.0.18",
 		"webpack-stream": "^6.1.2"
 	},
 	"dependencies": {
 		"dotenv": "^10.0.0",
 		"ejs": "^3.1.6",
 		"express": "^4.17.1",
+		"googleapis": "^92.0.0",
+		"multiparty": "^4.2.2",
+		"nodemailer": "^6.7.2",
+		"nodemailer-sendgrid-transport": "^0.2.0",
 		"nodemon": "^2.0.12",
 		"stripe": "^8.161.0",
 		"vue": "^2.6.14"

@@ -10,9 +10,7 @@ let isProd = mode.production();
 let environment = 'development';
 
 let checkEnv = () => {
-	if (isProd) {
-		environment = 'production';
-	}
+	if (isProd) environment = 'production';
 }
 
 let css = () => {
@@ -58,14 +56,16 @@ let js = () => {
 
 exports.watch = () => {
 	browserSync.init({
-		// server: { baseDir: '.' },
-		proxy: 'localhost:8585'
+		proxy: 'localhost:8585',
+		// server: {baseDir: '.'}
 	});
-	// watch('./*.html').on('change', browserSync.reload);
-	watch(['views/*.ejs', 'views/includes/*.ejs']).on('change', browserSync.reload);
-	watch('src/css/*.css', css);
+	watch([
+			'views/**/*.ejs',
+			'public/style.css'
+		]).on('change', browserSync.reload);
 	watch('src/js/*.js', js);
 }
 
 // production build command: gulp build --production
-exports.build = parallel(css, js);
+exports.build = js;
+// exports.build = parallel(css, js);

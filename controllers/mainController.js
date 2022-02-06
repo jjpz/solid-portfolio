@@ -8,28 +8,32 @@ const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY, {
 });
 
 exports.viewHome = (req, res) => {
-    res.render('index');
+    res.render('index', {title: 'Home'});
 };
 
 exports.viewSpsPage = (req, res) => {
-    res.render('solid-pro-services');
+    res.render('solid-pro-services', {title: 'Solid Pro Services'});
 };
 
 exports.viewCustomWebsitesPage = (req, res) => {
-    res.render('websites');
+    res.render('websites', {title: 'Custom Websites'});
 };
 
 exports.viewHostingPage = (req, res) => {
-    res.render('hosting');
+    res.render('hosting', {title: 'Web Hosting'});
 };
 
 exports.viewTermsPage = (req, res) => {
-    res.render('terms-of-service');
+    res.render('terms-of-service', {title: 'Terms of Services'});
 };
 
 exports.viewPrivacyPage = (req, res) => {
-    res.render('privacy-policy');
+    res.render('privacy-policy', {title: 'Privacy Policy'});
 };
+
+exports.viewContactPage = (req, res) => {
+    res.render('contact', {title: 'Contact Us'});
+}
 
 exports.createCheckoutSession = async function (req, res) {
     const domainURL = process.env.DOMAIN;
