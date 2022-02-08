@@ -765,6 +765,24 @@ main {
 	text-align: center;
 }
 
+.contact-image-section {
+	max-width: 75%;
+	margin: auto;
+}
+
+.contact-image {
+	display: flex;
+	position: relative;
+}
+
+.contact-image > img {
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	object-fit: contain;
+}
+
 @media (max-width: 1023px) {
 	.contact-info {
 		text-align: left;
@@ -773,6 +791,10 @@ main {
 
 @media (max-width: 767px) {
 	.contact-bottom {
+		max-width: 100%;
+	}
+
+	.contact-image-section {
 		max-width: 100%;
 	}
 }
