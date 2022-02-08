@@ -282,20 +282,20 @@
             </div>
             <form id="contact-form" action="send" method="POST" enctype="multipart/form-data">
                 <div class="input-group flex flex-wrap">
-                    <input type="text" name="firstname" id="form-firstname" class="form-control input-fname" placeholder="First Name" required>
-                    <input type="text" name="lastname" id="form-lastname" class="form-control input-lname" placeholder="Last Name" required>
+                    <input type="text" name="firstname" id="form-firstname" class="form-control input-fname" placeholder="First Name*" required>
+                    <input type="text" name="lastname" id="form-lastname" class="form-control input-lname" placeholder="Last Name*" required>
                 </div>
                 <div class="input-group">
-                    <input type="email" name="email" id="form-email" placeholder="Email" required>
+                    <input type="email" name="email" id="form-email" placeholder="Email*" required>
                 </div>
                 <div class="input-group">
-                    <input type="tel" name="phone" id="form-phone" placeholder="Phone" required>
+                    <input type="tel" name="phone" id="form-phone" placeholder="Phone*" required>
                 </div>
                 <div class="input-group">
-                    <textarea name="message" id="form-message" cols="25" rows="5" placeholder="Message" required></textarea>
+                    <textarea name="message" id="form-message" cols="25" rows="5" placeholder="Message*" required></textarea>
                 </div>
                 <button type="submit" class="button button-full button-black" value="submit">SEND</button>
-                <div class="form-message hidden">Your message has been sent. Thanks!</div>
+                <div class="form-message hidden"></div>
             </form>
         </section>
 
@@ -305,35 +305,6 @@
     </main>
 
     <%- include('includes/footer') %>
-
-    <script>
-        const form = document.querySelector('#contact-form');
-        
-        const formEvent = form.addEventListener('submit', (event) => {
-            event.preventDefault();
-            let formData = new FormData(form);
-            // console.log(formData);
-            let entries = formData.entries();
-            // console.log(entries);
-            let data = Object.fromEntries(entries);
-            console.log(data);
-            sendMail(data);
-        });
-
-        const sendMail = (data) => {
-            fetch('send', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(data)
-            })
-                .then(response => {
-                    response.json();
-                })
-                .then(data => console.log(data));
-        }
-    </script>
 </body>
 
 </html>

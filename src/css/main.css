@@ -814,7 +814,6 @@ textarea {
 .input-fname,
 .input-lname {
 	width: calc(50% - 0.5rem);
-	text-transform: capitalize;
 }
 
 .input-fname {
@@ -887,6 +886,13 @@ textarea {
 	background-color: #fff;
 	color: var(--color-hex-dark);
 	transition: all 0.25s;
+}
+
+.button-black:hover:disabled {
+	background-color: var(--color-hex-dark);
+	color: #fff;
+	transition: all 0.25s;
+	cursor: default;
 }
 
 .button-white {

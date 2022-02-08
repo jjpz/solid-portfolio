@@ -3,6 +3,11 @@ const env = require('dotenv');
 const envFilePath = path.resolve(__dirname, '../.env');
 env.config({ path: envFilePath });
 
+const nodemailer = require('nodemailer');
+const { google } = require("googleapis");
+const OAuth2 = google.auth.OAuth2;
+const sendgridTransport = require('nodemailer-sendgrid-transport');
+
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY, {
     apiVersion: '2020-08-27'
 });
@@ -33,7 +38,74 @@ exports.viewPrivacyPage = (req, res) => {
 
 exports.viewContactPage = (req, res) => {
     res.render('contact', {title: 'Contact Us'});
-}
+};
+
+exports.sendEmail = (req, res) => {
+    const data = req.body;
+    console.log(data);
+
+    const oauth2Client = new OAuth2(
+        process.env.OAUTH_CLIENT_ID,
+        process.env.OAUTH_CLIENT_SECRET
+    );
+
+    oauth2Client.setCredentials({
+        refresh_token: process.env.OAUTH_REFRESH_TOKEN
+    });
+
+    const accessToken = oauth2Client.getAccessToken();
+
+    let transporter = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+            type: 'OAuth2',
+            user: process.env.EMAIL_USERNAME,
+            pass: process.env.EMAIL_PASSWORD,
+            clientId: process.env.OAUTH_CLIENT_ID,
+            clientSecret: process.env.OAUTH_CLIENT_SECRET,
+            refreshToken: process.env.OAUTH_REFRESH_TOKEN,
+            accessToken: accessToken
+        },
+    });
+
+    // verify connection configuration
+    transporter.verify((error, success) => {
+        error
+            ? console.log(`VERIFY ERROR: ${error}`)
+            : console.log(`VERIFY SUCCESS: ${success}`);
+    });
+
+    let mailOptions = {
+        priority: 'high',
+        from: `${data.firstname} ${data.lastname} <${process.env.EMAIL_USERNAME}>`,
+        to: process.env.EMAIL_JJ,
+        cc: [process.env.EMAIL_JJ],
+        subject: 'Solid Website Contact Form Email',
+        html: `<p>First Name: ${data.firstname}</p>
+            <p>Last Name: ${data.lastname}</p>
+            <p>Email: ${data.email}</p>
+            <p>Phone: ${data.phone}</p>
+            <p>Message: ${data.message}</p>`
+    };
+    // console.log(mailOptions);
+
+    transporter.sendMail(mailOptions, (error, info) => {
+        if (error) {
+            console.log(`SEND ERROR: ${error}`);
+            res.status(500).send({message: 'Something went wrong.'});
+        } else {
+            console.log('SEND SUCCESS');
+            // console.log(`${info.messageId}`);
+            // console.log(`${info.envelope}`);
+            // console.log(`${info.accepted}`);
+            // console.log(`${info.rejected}`);
+            // console.log(`${info.pending}`);
+            // console.log(`${info.response}`);
+            res.status(200).send({message: 'Email successfully sent!'});
+        }
+    });
+
+};
 
 exports.createCheckoutSession = async function (req, res) {
     const domainURL = process.env.DOMAIN;
