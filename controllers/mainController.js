@@ -80,7 +80,7 @@ exports.sendEmail = (req, res) => {
         from: `${data.firstname} ${data.lastname} <${process.env.EMAIL_USERNAME}>`,
         to: process.env.EMAIL_USERNAME,
         cc: [process.env.EMAIL_CJ, process.env.EMAIL_JJ],
-        subject: 'Solid Website Contact Form Email',
+        subject: 'Solid Website Contact Form',
         html: `<p>First Name: ${data.firstname}</p>
             <p>Last Name: ${data.lastname}</p>
             <p>Email: ${data.email}</p>
