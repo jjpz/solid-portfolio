@@ -42,7 +42,7 @@ exports.viewContactPage = (req, res) => {
 
 exports.sendEmail = (req, res) => {
     const data = req.body;
-    console.log(data);
+    // console.log(data);
 
     const oauth2Client = new OAuth2(
         process.env.OAUTH_CLIENT_ID,
@@ -94,7 +94,7 @@ exports.sendEmail = (req, res) => {
             console.log(`SEND ERROR: ${error}`);
             res.status(500).send({message: 'Something went wrong.'});
         } else {
-            console.log('SEND SUCCESS');
+            // console.log('SEND SUCCESS');
             // console.log(`${info.messageId}`);
             // console.log(`${info.envelope}`);
             // console.log(`${info.accepted}`);

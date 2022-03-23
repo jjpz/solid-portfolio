@@ -829,6 +829,11 @@ input {
 	height: 60px;
 }
 
+input.error,
+textarea.error {
+	border: 2px solid #ef3c70;
+}
+
 textarea {
 	height: 120px;
 }

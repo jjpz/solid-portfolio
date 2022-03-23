@@ -1,2 +1,2 @@
 import './contact';
-import './footer.js';
+import './footer';
